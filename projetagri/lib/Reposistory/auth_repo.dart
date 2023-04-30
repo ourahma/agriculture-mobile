@@ -6,8 +6,6 @@ import 'DataBase.dart';
 import 'Models/User.dart';
 
 class AuthReposistory {
-
-
   /*login(String? email, String? password) async {//the function that log the user in
     var db = await Database.connect();
     var collection = db.collection('user');
@@ -22,26 +20,22 @@ class AuthReposistory {
     }
   }*/
 
-
-
   Future<bool?> signUp(SignupUser user) async {
     bool? signedin;
     var db = await Database.connect();
     var collection = db.collection('user');
     try {
       collection.insertOne({
-        "roles":user.role,
+        "roles": user.role,
         "f_name": user.firstname,
         "l_name": user.lastname,
-        "phone":user.phone,
+        "phone": user.phone,
         "password": user.password,
         "email": user.email,
         "signindate": DateTime.now()
       });
 
-      
-        signedin = true;
-      
+      signedin = true;
     } catch (e) {
       print(e.toString());
       signedin = false;
@@ -49,25 +43,28 @@ class AuthReposistory {
     return signedin;
   }
 
-
   logout() async {
     bool isloggedin;
-    final userdata=GetStorage();
+    final userdata = GetStorage();
     //String useremail =userdata.read("email");
     userdata.write("isloggedin", false);
-    var response = await http.post( Uri.parse("https://azure-dut-eagri.azurewebsites.net/eagri-mobile/clients/auth/logout") ,
+    var response = await http.post(
+      Uri.parse(
+          "https://azure-dut-eagri.azurewebsites.net/eagri-mobile/clients/auth/logout"),
       headers: {
         'Content-Type': 'application/json',
       },
       //body:  email //json.encode(userdata)
     );
     final data = response.body;
-    //print('=========================================> $data');
-    return data ;
+    print('=========================================> $data');
+    print(data);
+    isloggedin = false;
+    return isloggedin;
   }
 
-  bool start(){
-    bool ready=false;
+  bool start() {
+    bool ready = false;
     return ready;
   }
 
@@ -79,18 +76,19 @@ class AuthReposistory {
     return data ;
   }*/
 
-
-  login(String email , String password) async {
+  login(String email, String password) async {
     final user = User(email, password);
-    var res = await http.post( Uri.parse("https://azure-dut-eagri.azurewebsites.net/eagri-mobile/clients/auth/login") ,
+    var res = await http.post(
+        Uri.parse(
+            "https://azure-dut-eagri.azurewebsites.net/eagri-mobile/clients/auth/login"),
         headers: {
-        'Content-Type': 'application/json',
+          'Content-Type': 'application/json',
         },
         body: json.encode(user));
-  var  data = res.body.toString();
-   // String token = data["data"]["access_token"];
+    var data = res.body.toString();
+    // String token = data["data"]["access_token"];
     //hanaeSharedPrefences pre=SharedPrederences.getInstance();
     print('$data login http');
-    return data ;
+    return data;
   }
 }

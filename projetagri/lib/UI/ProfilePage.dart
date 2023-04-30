@@ -1,14 +1,9 @@
-import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_settings_screens/flutter_settings_screens.dart';
-import 'package:get/utils.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:hive/hive.dart';
-import 'package:hive_flutter/adapters.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:projetagri/Reposistory/auth_repo.dart';
 import 'package:projetagri/UI/settings.dart';
 import '../Reposistory/Geolocation/geolocationRepository.dart';
 import '../bloc/Authentification/authentification_bloc.dart';
@@ -153,8 +148,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [/*${getStorage.data['firstname']} ${getStorage.data['lastname']}*/
                       const SizedBox(height: 10,),
-                      Text('', style: Theme.of(context).textTheme.headline4,),
-                      Text(/*getStorage.data['email'] */"email", style: Theme.of(context).textTheme.headline6 ,),
+                      Text('', style: Theme.of(context).textTheme.headlineMedium,),
+                      Text(/*getStorage.data['email'] */"email", style: Theme.of(context).textTheme.titleLarge ,),
                     ],
                   ),
                   SizedBox(height: 20,),

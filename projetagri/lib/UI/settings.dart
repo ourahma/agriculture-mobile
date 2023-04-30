@@ -1,8 +1,6 @@
 import 'package:app_settings/app_settings.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class SettingsPage extends StatelessWidget {

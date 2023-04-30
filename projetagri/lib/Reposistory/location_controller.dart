@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_webservice/src/places.dart';
@@ -18,7 +17,7 @@ class LocationController extends GetxController{
 
 
   Future<List<Prediction>> searchLocation( String text) async {
-    if(text != null && text.isNotEmpty){
+    if(text.isNotEmpty){
       http.Response response= await getLocationData(text);
 
       var data=jsonDecode(response.body.toString()); // decode the datat received from the getLocation function

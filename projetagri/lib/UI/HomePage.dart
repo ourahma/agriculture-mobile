@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:projetagri/UI/map_screen.dart';
 import '../common/color.dart';

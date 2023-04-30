@@ -1,6 +1,5 @@
 // ignore_for_file: unused_import
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -112,6 +111,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                           if (value!.isEmpty) {
                             return '*Insert password ';
                           }
+                          return null;
                         },
                         obscureText: show,
                         decoration: InputDecoration(

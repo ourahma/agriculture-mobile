@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projetagri/Reposistory/Models/weather_data.dart';
 import 'package:projetagri/UI/Items/HitoricalDataGraph.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 import '../Reposistory/Geolocation/geolocationRepository.dart';
 import '../Reposistory/Models/historicdatamodel.dart';
 import '../bloc/DataGraph/data_graph_bloc.dart';

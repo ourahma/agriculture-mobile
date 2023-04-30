@@ -9,17 +9,16 @@ class Database {
     var db = null;
     /*
     * mongodb+srv://maroua:1234@cluster0.fiyvmrf.mongodb.net/agricultureapp?retryWrites=true&w=majority
+
+    mongodb+srv://groupe:eagriculture@cluster0.zicrcop.mongodb.net/test
     * */
     if (db == null) {
       db = await Db.create(
-          'mongodb+srv://groupe:eagriculture@cluster0.zicrcop.mongodb.net/test');
+          'mongodb+srv://maroua:1234@cluster0.fiyvmrf.mongodb.net/agricultureapp?retryWrites=true&w=majority');
       await db.open(); //open the connection
       inspect(db);
       var statut = db.serverStatus();
-      print(statut);
-      var collection = db.collection('user');
-      
-
+      print('database status is $statut');
       return db;
     } else {
       return db;

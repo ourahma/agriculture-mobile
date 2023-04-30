@@ -1,14 +1,8 @@
-import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:projetagri/Reposistory/Geolocation/geolocationRepository.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../Reposistory/Models/historicdatamodel.dart';
-import '../../Reposistory/Models/weather_data.dart';
 
-import 'package:syncfusion_flutter_charts/charts.dart' as charts ;
 
-import '../../common/color.dart';
 
 
 

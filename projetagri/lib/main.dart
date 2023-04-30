@@ -1,32 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_settings_screens/flutter_settings_screens.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:hive/hive.dart';
-import 'package:projetagri/bloc/DataGraph/data_graph_bloc.dart';
-import 'package:projetagri/bloc/Location/location_bloc.dart';
-import 'package:projetagri/common/color.dart';
-import 'Reposistory/Geolocation/geolocationRepository.dart';
-import 'Reposistory/auth_repo.dart';
-import 'Reposistory/location_controller.dart';
-import 'UI/ForgetPassword.dart';
-import 'UI/DetailPage.dart';
-import 'UI/Items/Navigationbar.dart';
-import 'UI/ProfilePage.dart';
-import 'UI/SearchPage.dart';
-import 'UI/Login.dart';
-import 'UI/HomePage.dart';
-
-import 'UI/SignUp.dart';
-import 'UI/map_screen.dart';
-import 'UI/settings.dart';
-import 'bloc/Authentification/authentification_bloc.dart';
-import 'bloc/Authentification/authentification_event.dart';
-import 'bloc/NetworkBloc/network_bloc_bloc.dart';
+import 'library.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,7 +19,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _mainState extends State<MyApp> {
-  
+  bool isloggedin = false;
 
   @override
   void initState() {
@@ -55,8 +29,6 @@ class _mainState extends State<MyApp> {
 
   @override
   void dispose() {
-    Hive.box('user').compact();
-    Hive.close();
     super.dispose();
   }
 
@@ -97,15 +69,13 @@ class _mainState extends State<MyApp> {
   }
 
   Widget app() {
-    double height = MediaQuery.of(context).size.height;
-    final userdata = GetStorage();
-    bool? isloggedin = userdata.read("isloggedin");
+    //final SharedPreferences prefs =await SharedPreferences.getInstance();
+    isloggedin = true;
     return Scaffold(
       extendBody: true,
       body: BlocBuilder<NetworkBlocBloc, NetworkBlocState>(
         builder: (context, state) {
           if (state is NetworkFailureState) {
-            /*Container(decoration: const BoxDecoration(image: DecorationImage(fit: BoxFit.cover,image: Image.asset('nointernetpic.png'))),)*/
             return Stack(
               children: [
                 Container(
@@ -148,12 +118,10 @@ class _mainState extends State<MyApp> {
       ),
     );
   }
-}
-
-Widget home(BuildContext context) {
+  Widget home(BuildContext context) {
   return MaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: '/nav',
+    initialRoute: isloggedin?'/nav':'/',
     routes: {
       '/': (context) => const Login(),
       '/Signup': (context) => const Signup(),
@@ -168,16 +136,6 @@ Widget home(BuildContext context) {
     },
   );
 }
- /*initial(){
-  final userdata = GetStorage();
-  bool? isloggedin = userdata.read("isloggedin");
-  if(isloggedin==true){
-    FlutterNativeSplash.remove();
-    Navigator.pushReplacementNamed(context, "/nav");
-  }else{
-    FlutterNativeSplash.remove();
-    Navigator.pushReplacementNamed(context, "/");
-  }
- 
-  
-}*/
+}
+
+

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:hive/hive.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -58,8 +57,6 @@ class _SignupState extends State<Signup> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
     return BlocConsumer<AuthentificationBloc, AuthentificationState>(
         builder: (context, state) {
       if (state is SignupLoadingState) {
@@ -178,13 +175,14 @@ class _SignupState extends State<Signup> {
                                       "email", emailcontroller.text);
                                   prefs.setString(
                                       "password", pwdcontroller.text);
+                                  print('user is $_firstname $_lastname $_pwd $_profile $_email');
                                   authBloc.add(SignupButtonPressed(
-                                      role: rolecontroller.text,
-                                      firstname: firstnamecontroller.text,
-                                      lastname: lastnamecontroller.text,
-                                      phone: phonecontroller.text,
-                                      email: emailcontroller.text,
-                                      password: pwdcontroller.text));
+                                      role: _profile,
+                                      firstname: _firstname,
+                                      lastname: _lastname,
+                                      phone: _phone,
+                                      email: _email,
+                                      password: _pwd));
                                 } else {
                                   Get.snackbar(
                                     "Something went wrong ! ",
@@ -285,6 +283,7 @@ class _SignupState extends State<Signup> {
         if (value!.isEmpty) {
           return '*Insert a password';
         }
+        return null;
       },
       obscureText: title == 'password' ? showsignin : show,
       decoration: InputDecoration(

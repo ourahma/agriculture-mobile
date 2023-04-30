@@ -33,7 +33,7 @@ dependencies:
   intl_phone_field:
   fl_country_code_picker:
   line_awesome_flutter: ^2.0.0
-  fl_chart:
+  
 
   rxdart:
   json_serializable:
@@ -71,12 +71,7 @@ dependencies:
 
 
 
-  # Using local storage with hive
-  hive:
-  hive_flutter:
-  source_gen:
-  auto_route: 
-  auto_route_generator:
+  
 
   # chart
   syncfusion_flutter_charts:

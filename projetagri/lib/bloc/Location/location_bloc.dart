@@ -2,9 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_webservice/src/places.dart';
-import 'package:projetagri/Reposistory/location_controller.dart';
-import 'package:rxdart/rxdart.dart';
 
 import '../../Reposistory/Geolocation/geolocationRepository.dart';
 

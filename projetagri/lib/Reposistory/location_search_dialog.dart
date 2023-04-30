@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_webservice/src/places.dart';
@@ -31,11 +30,11 @@ class LocationSearchDialog extends StatelessWidget {
             decoration: InputDecoration(
               hintText: 'Seach a Location',
               border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),borderSide: BorderSide(style: BorderStyle.none,width: 0)),
-              hintStyle: Theme.of(context).textTheme.headline2?.copyWith(fontSize: 16,color: Theme.of(context).disabledColor),
+              hintStyle: Theme.of(context).textTheme.displayMedium?.copyWith(fontSize: 16,color: Theme.of(context).disabledColor),
               filled: true, fillColor: Theme.of(context).cardColor
             ),
-            style: Theme.of(context).textTheme.headline2?.copyWith(
-              color: Theme.of(context).textTheme.bodyText1?.color ,fontSize: 20,)),
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+              color: Theme.of(context).textTheme.bodyLarge?.color ,fontSize: 20,)),
 
 
           suggestionsCallback: (pattern) async{
@@ -47,7 +46,7 @@ class LocationSearchDialog extends StatelessWidget {
               Icon(Icons.location_on),
               Expanded(
                 child: Text(suggestion.description!, maxLines: 1, overflow: TextOverflow.ellipsis,style: TextStyle(
-                  color: Theme.of(context).textTheme.bodyText1?.color,fontSize: 20)),
+                  color: Theme.of(context).textTheme.bodyLarge?.color,fontSize: 20)),
               )
             ],),
             );

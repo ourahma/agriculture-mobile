@@ -3,10 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:hive/hive.dart';
-import 'package:projetagri/Reposistory/auth_repo.dart';
 import 'package:projetagri/bloc/Authentification/authentification_event.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../bloc/Authentification/authentification_bloc.dart';
@@ -47,7 +45,6 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     return BlocConsumer<AuthentificationBloc, AuthentificationState>(
         builder: (context, state) {
       if (state is LoginLoadingState) {
@@ -113,8 +110,7 @@ class _LoginState extends State<Login> {
                         width: width * 0.9,
                         child: ElevatedButton(
                           onPressed: () async {
-                            print("tapped");
-                            if (_email != null && _pwd != null) {
+                            if (_key.currentState!.validate()) {
                               final SharedPreferences prefs =
                                   await SharedPreferences.getInstance();
                               prefs.setString("email", _email);
@@ -123,7 +119,11 @@ class _LoginState extends State<Login> {
                                   email: _email, password: _pwd));
                             } else {
                               Get.snackbar("Warining",
-                                  "Make sure you enter all information ");
+                                  "Make sure you enter all information ",
+                                  icon: Icon(
+                                    Icons.dangerous,
+                                    color: Colors.red,
+                                  ));
                             }
                           },
                           style: ElevatedButton.styleFrom(
@@ -181,6 +181,7 @@ class _LoginState extends State<Login> {
         if (value!.isEmpty) {
           return '*Insert a password';
         }
+        return null;
       },
       obscureText: title == 'password' ? showsignin : show,
       decoration: InputDecoration(
