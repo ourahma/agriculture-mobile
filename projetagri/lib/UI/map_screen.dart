@@ -45,6 +45,7 @@ class _MapScreenState extends State<MapScreen> {
       setState(() {});
     });
   }
+  
 
   Future<Position> getCurrentLocation() async {
     await Geolocator.requestPermission()
