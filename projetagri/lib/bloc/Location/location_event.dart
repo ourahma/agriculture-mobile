@@ -7,4 +7,6 @@ abstract class LocationEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class OnpressedLocationEvent extends LocationEvent{}
+class OnpressedLocationPositionEvent extends LocationEvent{}
+
+class OnpressedLocationSearchEvent extends LocationEvent{}
