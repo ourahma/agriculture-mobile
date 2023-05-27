@@ -22,7 +22,7 @@ class _NavBarState extends State<Navigation> {
   final search= const SearchPage();
   final profile= const ProfilePage();
   final addesp=const AddEsp();
-  final detail= const DetailPage();
+  //final detail= const DetailPage();
 
   int _page=0;
   final GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
@@ -33,8 +33,8 @@ class _NavBarState extends State<Navigation> {
       case 1:
         return search;
       case 2:
-        return detail;
-      case 3:
+      //   return detail;
+      // case 3:
         return profile;
       default:
         return Container(child: const Text("No Page found"),);
@@ -58,7 +58,7 @@ class _NavBarState extends State<Navigation> {
         items: const [
           Icon(Icons.home),
           Icon(Icons.search_outlined),
-          Icon(Icons.add_circle_outline),
+          //Icon(Icons.add_circle_outline),
           Icon(Icons.person)
         ],
       ),
