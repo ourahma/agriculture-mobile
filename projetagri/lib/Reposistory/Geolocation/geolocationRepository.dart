@@ -44,9 +44,7 @@ class GeolocationRepository {
 
     Position position = await Geolocator.getCurrentPosition();
     // Store user position in shared preferences
-
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-
     lat = position.latitude.toString();
     long = position.longitude.toString();
     prefs.setString("long", long!);
@@ -56,17 +54,18 @@ class GeolocationRepository {
   }
 
   Future<Map<String, dynamic>> getCurrentdata() async {
+    final prefs = await SharedPreferences.getInstance();
     // Récupération de la localisation actuelle de l'utilisateur
+    long = prefs.getString("long");
+    lat = prefs.getString("lat") ;
 
-    if (lat == null || long == null) {
-      var geoloc = await Geolocator.getCurrentPosition();
-      lat = geoloc.latitude.toString();
-      long = geoloc.longitude.toString();
-    }
-    var url =
-        'https://api.open-meteo.com/v1/forecast?latitude=$lat&longitude=$long&current_weather=true&hourly=temperature_2m,relativehumidity_2m,rain';
-    var response = await http
-        .get(Uri.parse(url), headers: {"Content-Type": "application/json"});
+    // if (lat == null || long == null) {
+    //   var geoloc = await Geolocator.getCurrentPosition();
+    //   lat = geoloc.latitude.toString();
+    //   long = geoloc.longitude.toString();
+    // }
+    var url = 'https://api.open-meteo.com/v1/forecast?latitude=$lat&longitude=$long&current_weather=true&hourly=temperature_2m,relativehumidity_2m,rain';
+    var response = await http.get(Uri.parse(url), headers: {"Content-Type": "application/json"});
 
     Map<String, dynamic> data = jsonDecode(response.body);
     return data;
