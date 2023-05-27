@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:projetagri/UI/map_screen.dart';
+import 'package:projetagri/library.dart';
 import '../common/color.dart';
 import 'Items/MyHeaderDrawer.dart';
+import 'ProfilePage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -24,7 +26,11 @@ class _HomePageState extends State<HomePage> {
               children: [
                 const MyHeaderDrawer(),
                 MyDrawerList()
-              ],),),),),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 
@@ -52,16 +58,20 @@ class _HomePageState extends State<HomePage> {
           Navigator.pop(context),
           setState(() {
             if(id==1){
-              Navigator.pushReplacementNamed(context, '/HomePgae');
+              //Navigator.pushReplacementNamed(context, '/HomePgae');
+              Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
               }
             else if(id==2){
-              Navigator.pushReplacementNamed(context, '/profile');
+              //Navigator.pushReplacementNamed(context, '/profile');
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
             }
             else if(id==3){
-              Navigator.pushReplacementNamed(context, '/LocationScreen');
+              //Navigator.pushReplacementNamed(context, '/LocationScreen');
+              Navigator.push(context, MaterialPageRoute(builder: (context) => MapScreen()));
             }
             else if(id==4){
-              Navigator.pushReplacementNamed(context, '/settings');
+              //Navigator.pushReplacementNamed(context, '/settings');
+              Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsPage()));
             }
           })
         },
