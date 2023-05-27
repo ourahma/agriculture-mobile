@@ -114,7 +114,7 @@ class _mainState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       //initialRoute: isloggedin ? '/nav' : '/',
-       initialRoute: '/DetailPage',
+       initialRoute: '/nav',
       routes: {
         '/': (context) => const Login(),
         '/Signup': (context) => const Signup(),
