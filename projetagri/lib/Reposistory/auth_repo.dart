@@ -68,7 +68,7 @@ class AuthReposistory {
     final userdata = GetStorage();
     //String useremail =userdata.read("email");
     userdata.write("isloggedin", false);
-    var response = await http.post(Uri.parse("https://azure-dut-eagri.azurewebsites.net/eagri-mobile/clients/auth/logout"),
+    var response = await http.post(Uri.parse("link"),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -78,40 +78,5 @@ class AuthReposistory {
   }
 
 
-//azure
-/*login(String email, String password) async {
-    final user = User(email, password);
-    var res = await http.post(
-        Uri.parse("https://azure-dut-eagri.azurewebsites.net/eagri-mobile/clients/auth/login"),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: json.encode(user));
-    var data = res.body.toString();
-    print('$data login http');
-    return data;
-  }*/
-
-/*login(String? email, String? password) async {//the function that log the user in
-    var db = await Database.connect();
-    var collection = db.collection('user');
-    final user;
-    try {
-      user = await collection.find({"email": "$email", "password": "$password"}).toList();
-      print(user);
-      return user;
-    } catch (e) {
-      print(e.toString());
-      return null;
-    }
-  }*/
-
-/*signUp(String firstname , String lastname,String email , String password) async {
-    var res = await http.post("http://" as Uri ,
-        headers: {},
-        body: {"f_name": firstname, "l_name": lastname,"email":email , "password": password});
-    final data = json.decode(res.body);
-    return data ;
-  }*/
 
 }
