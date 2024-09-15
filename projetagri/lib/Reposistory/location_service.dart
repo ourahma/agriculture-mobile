@@ -7,12 +7,8 @@ Future<http.Response> getLocationData(String text) async {
   http.Response response;
 
   response= await http.get(
-    /*
-    * https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$text&key=AIzaSyCMESvjp3G5FtPnukZ28_GVOuFSvEhSS9c
-    *
-    * http://mvs.bslmeiyu.com/api/v1/config/place-api-autocomplete?search_text=$text
-    * */
-    Uri.parse('https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$text&key=AIzaSyCMESvjp3G5FtPnukZ28_GVOuFSvEhSS9c'),
+   
+    Uri.parse('link'),
     headers: {"Content-Type": "application/json"});
 
   print(jsonDecode(response.body));
