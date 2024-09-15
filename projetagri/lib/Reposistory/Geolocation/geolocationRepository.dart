@@ -64,7 +64,7 @@ class GeolocationRepository {
     //   lat = geoloc.latitude.toString();
     //   long = geoloc.longitude.toString();
     // }
-    var url = 'https://api.open-meteo.com/v1/forecast?latitude=$lat&longitude=$long&current_weather=true&hourly=temperature_2m,relativehumidity_2m,rain';
+    var url = 'link';
     var response = await http.get(Uri.parse(url), headers: {"Content-Type": "application/json"});
 
     Map<String, dynamic> data = jsonDecode(response.body);
@@ -97,9 +97,9 @@ class GeolocationRepository {
     DateTime lastYear = DateTime(now.year - 1, now.month, now.day);
     String formattedLastYearDate = DateFormat('yyyy-MM-dd').format(lastYear);
     print(formattedLastYearDate);
-    //var url ='https://archive-api.open-meteo.com/v1/era5?latitude=${geoloc.latitude}&longitude=${geoloc.longitude}&start_date=$datelastyear&end_date=$datenow&hourly=temperature_2m,rain,relativehumidity_2m';
+  
     var url =
-        'https://archive-api.open-meteo.com/v1/era5?latitude=$lat&longitude=$long&start_date=$formattedLastYearDate&end_date=$formattedDate&hourly=temperature_2m,relativehumidity_2m,rain';
+        'link';
     var response = await http
         .get(Uri.parse(url), headers: {"Content-Type": "application/json"});
     print(url);
@@ -127,8 +127,8 @@ class GeolocationRepository {
       long = geoloc.longitude.toString();
     }
     final response = await http.get(Uri.parse(
-        'https://api.openweathermap.org/data/2.5/forecast?lat=$lat&lon=$long&appid=02856aa462a81ad7719fc0a414504500'));
-    //final response = await http.get(Uri.parse('api.openweathermap.org/data/2.5/forecast/daily?lat=${geoloc.latitude}&lon=${geoloc.longitude}&cnt=7&appid=02856aa462a81ad7719fc0a414504500'));
+        'link'));
+   
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body);
       final list = json['list'];
