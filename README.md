@@ -42,4 +42,5 @@ The app is integrated with an ESP32 microcontroller and multiple sensors (humidi
 
 ## 💻 Contributors
 
-- **OURAHMA** – [GitHub](https://github.com/ourahma)
+- **OURAHMA Maroua** – [GitHub](https://github.com/ourahma)
+- **ZENNOURI Nassima** - [GitHub](https://github.com/NassimaZENNOURI)
