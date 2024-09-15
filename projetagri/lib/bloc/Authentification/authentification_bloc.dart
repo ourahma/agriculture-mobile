@@ -51,26 +51,6 @@ class AuthentificationBloc extends Bloc<AuthentificationEvent, AuthentificationS
 
 
 
-    /*@override
-    Stream<AuthentificationState> mapEventToState(
-        AuthentificationEvent event) async* {
-      var pref = await SharedPreferences.getInstance();
-      if (event is StartEvent) {
-        yield AuthentificationInitial();
-      } else if (event is LoginButtonPressed) {
-        yield LoginLoadingState();
-        var data = await repo.login(event.email, event.password);
-        if (data['roles']['name'] == "ROLE_USER") {
-          pref.setString("email", data['email']);
-          yield UserLoginSuccess();
-        } else if (data['roles']['name'] == "ROLE_ADMIN") {
-          yield AdminLoginSuccessState();
-        } else {
-          yield LoginErrorState(message: "Auth error");
-        }
-      }
-    }*/
-
 
 
 
