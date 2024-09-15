@@ -59,11 +59,7 @@ class GeolocationRepository {
     long = prefs.getString("long");
     lat = prefs.getString("lat") ;
 
-    // if (lat == null || long == null) {
-    //   var geoloc = await Geolocator.getCurrentPosition();
-    //   lat = geoloc.latitude.toString();
-    //   long = geoloc.longitude.toString();
-    // }
+   
     var url = 'link';
     var response = await http.get(Uri.parse(url), headers: {"Content-Type": "application/json"});
 
